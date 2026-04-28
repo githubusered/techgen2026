@@ -1,0 +1,14 @@
+C:\Users\kpars\OneDrive\Desktop\c#\RunTest\obj\Debug\net10.0\RunTest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kpars\OneDrive\Desktop\c#\RunTest\obj\Debug\net10.0\RunTest.AssemblyInfoInputs.cache
+C:\Users\kpars\OneDrive\Desktop\c#\RunTest\obj\Debug\net10.0\RunTest.AssemblyInfo.cs
+C:\Users\kpars\OneDrive\Desktop\c#\RunTest\obj\Debug\net10.0\RunTest.csproj.CoreCompileInputs.cache
+C:\Users\kpars\OneDrive\Desktop\c#\RunTest\bin\Debug\net10.0\RunTest.exe
+C:\Users\kpars\OneDrive\Desktop\c#\RunTest\bin\Debug\net10.0\RunTest.deps.json
+C:\Users\kpars\OneDrive\Desktop\c#\RunTest\bin\Debug\net10.0\RunTest.runtimeconfig.json
+C:\Users\kpars\OneDrive\Desktop\c#\RunTest\bin\Debug\net10.0\RunTest.dll
+C:\Users\kpars\OneDrive\Desktop\c#\RunTest\bin\Debug\net10.0\RunTest.pdb
+C:\Users\kpars\OneDrive\Desktop\c#\RunTest\obj\Debug\net10.0\RunTest.dll
+C:\Users\kpars\OneDrive\Desktop\c#\RunTest\obj\Debug\net10.0\refint\RunTest.dll
+C:\Users\kpars\OneDrive\Desktop\c#\RunTest\obj\Debug\net10.0\RunTest.pdb
+C:\Users\kpars\OneDrive\Desktop\c#\RunTest\obj\Debug\net10.0\RunTest.genruntimeconfig.cache
+C:\Users\kpars\OneDrive\Desktop\c#\RunTest\obj\Debug\net10.0\ref\RunTest.dll
