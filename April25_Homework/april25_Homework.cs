@@ -28,86 +28,89 @@ class Program
     {
         if (num == 0)
             return pretty ? "0 | 00000000 | 00000000000000000000000"
-                          : "00000000000000000000000000000000";
+                        : "00000000000000000000000000000000";
 
         int sign = num < 0 ? 1 : 0;
         num = Math.Abs(num);
 
         int exponent = 0;
 
-        while (num >= 2)
+        // normalization
+        while (num >= 2f)
         {
-            num /= 2;
+            num /= 2f;
             exponent++;
         }
 
-        while (num < 1)
+        while (num < 1f)
         {
-            num *= 2;
+            num *= 2f;
             exponent--;
         }
 
         int biasedExp = exponent + 127;
 
-        double fraction = num - 1;
-        StringBuilder mantissa = new StringBuilder();
+        float fraction = num - 1f;
+        char[] mantissa = new char[23];
 
+        // build mantissa (no StringBuilder, no Insert)
         for (int i = 0; i < 23; i++)
         {
-            fraction *= 2;
+            fraction *= 2f;
 
-            if (fraction >= 1)
+            if (fraction >= 1f)
             {
-                mantissa.Append('1');
-                fraction -= 1;
+                mantissa[i] = '1';
+                fraction -= 1f;
             }
             else
             {
-                mantissa.Append('0');
+                mantissa[i] = '0';
             }
         }
 
         string expBinary = ToBinary(biasedExp, 8);
+        string mantissaStr = new string(mantissa);
 
         if (pretty)
-            return $"{sign} | {expBinary} | {mantissa}";
+            return $"{sign} | {expBinary} | {mantissaStr}";
 
-        return $"{sign}{expBinary}{mantissa}";
+        return $"{sign}{expBinary}{mantissaStr}";
     }
 
-    static float IEEE754ToFloat(string input)
+        static float IEEE754ToFloat(string input)
     {
         input = input.Replace(" ", "").Replace("|", "");
 
         if (input.Length != 32)
-            return 0;
+            return 0f;
 
         int sign = input[0] - '0';
 
+        // exponent (8 bits)
         int exp = 0;
         for (int i = 1; i <= 8; i++)
         {
-            exp = exp * 2 + (input[i] - '0');
+            exp = (exp << 1) | (input[i] - '0');
         }
+
         exp -= 127;
 
-        double mantissa = 1.0;
-        double frac = 0.5;
+        // mantissa (23 bits)
+        float mantissa = 1f;
+        float frac = 0.5f;
 
         for (int i = 9; i < 32; i++)
         {
             if (input[i] == '1')
                 mantissa += frac;
 
-            frac /= 2;
+            frac *= 0.5f;
         }
 
-        double result = mantissa * Math.Pow(2, exp);
+        float result = mantissa * (float)Math.Pow(2, exp);
 
-        if (sign == 1)
-            result = -result;
-
-        return (float)result;
+        return sign == 1 ? -result : result;
     }
 
     static string ToBinary(int value, int bits)
